@@ -12,4 +12,6 @@ public interface ProductService {
     ProductDto save(ProductDto productDto);
 
     ProductDto editById(ProductDto productDto, Long id);
+
+    void deleteById(Long id);
 }

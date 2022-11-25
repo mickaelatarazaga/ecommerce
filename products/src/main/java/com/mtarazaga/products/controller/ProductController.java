@@ -41,4 +41,10 @@ public class ProductController {
     public ProductDto editById(@RequestBody ProductDto productDto, @PathVariable Long id) {
         return productService.editById(productDto, id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        productService.deleteById(id);
+    }
+
 }

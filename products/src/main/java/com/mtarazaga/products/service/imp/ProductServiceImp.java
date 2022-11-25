@@ -59,6 +59,16 @@ public class ProductServiceImp implements ProductService {
         return modelMapper.map(savedProduct, ProductDto.class);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        var productFound = findProductById(id);
+        if (productFound.isEmpty()) {
+            throw new NotFoundException("This product does not exist");
+        }
+        productFound.get().setDeleted(Boolean.TRUE);
+        productRepository.save(productFound.get());
+    }
+
     private Optional<Product> findProductById(Long id) {
         return productRepository.findById(id);
     }
