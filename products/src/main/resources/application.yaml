@@ -1,1 +1,20 @@
+spring:
+  application:
+    name: products
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: product
+    password: passProduct
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+      path: /h2
 
+server:
+  port: 8081
+  servlet:
+    context-path: /products_app/v1/products
