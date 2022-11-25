@@ -41,4 +41,10 @@ public class ProductServiceImp implements ProductService {
         }
         return modelMapper.map(productFound.get(), ProductDto.class);
     }
+
+    @Override
+    public ProductDto save(ProductDto productDto) {
+        var savedProduct = productRepository.save(modelMapper.map(productDto, Product.class));
+        return modelMapper.map(savedProduct, ProductDto.class);
+    }
 }

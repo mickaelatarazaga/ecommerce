@@ -30,4 +30,10 @@ public class ProductController {
     public ProductDto findById(@PathVariable Long id) {
         return productService.findById(id);
     }
+
+    @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ProductDto save(@RequestBody ProductDto productDto) {
+        return productService.save(productDto);
+    }
 }
