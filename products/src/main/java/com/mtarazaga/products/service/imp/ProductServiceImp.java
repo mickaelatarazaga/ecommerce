@@ -33,4 +33,12 @@ public class ProductServiceImp implements ProductService {
         return productsDto;
     }
 
+    @Override
+    public ProductDto findById(Long id) {
+        var productFound = findProductById(id);
+        if (productFound.isEmpty()) {
+            throw new NotFoundException("Product Not Found");
+        }
+        return modelMapper.map(productFound.get(), ProductDto.class);
+    }
 }
