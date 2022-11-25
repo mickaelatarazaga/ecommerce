@@ -36,4 +36,9 @@ public class ProductController {
     public ProductDto save(@RequestBody ProductDto productDto) {
         return productService.save(productDto);
     }
+
+    @PutMapping("/{id}")
+    public ProductDto editById(@RequestBody ProductDto productDto, @PathVariable Long id) {
+        return productService.editById(productDto, id);
+    }
 }

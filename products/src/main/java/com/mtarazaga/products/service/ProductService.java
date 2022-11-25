@@ -10,4 +10,6 @@ public interface ProductService {
     ProductDto findById(Long id);
 
     ProductDto save(ProductDto productDto);
+
+    ProductDto editById(ProductDto productDto, Long id);
 }

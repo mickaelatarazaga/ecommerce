@@ -47,4 +47,19 @@ public class ProductServiceImp implements ProductService {
         var savedProduct = productRepository.save(modelMapper.map(productDto, Product.class));
         return modelMapper.map(savedProduct, ProductDto.class);
     }
+
+    @Override
+    public ProductDto editById(ProductDto productDto, Long id) {
+        var productFound = findProductById(id);
+        if (productFound.isEmpty()) {
+            throw new NotFoundException("Product not found");
+        }
+        BeanUtils.copyProperties(productDto, productFound.get());
+        var savedProduct = productRepository.save(productFound.get());
+        return modelMapper.map(savedProduct, ProductDto.class);
+    }
+
+    private Optional<Product> findProductById(Long id) {
+        return productRepository.findById(id);
+    }
 }
